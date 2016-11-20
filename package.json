@@ -1,0 +1,12 @@
+{
+  "name": "indaba",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "font-awesome": "^4.6.3",
+    "bootstrap": "^4.0.0-alpha.5"
+  },
+  "scripts": {
+    "postinstall" : "rsync -d --del node_modules/* indaba/static/"
+  }
+}
