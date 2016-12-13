@@ -46,8 +46,15 @@ CACHES = {
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
-MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-INSTALLED_APPS += ('debug_toolbar', 'proposals',)
+MIDDLEWARE += (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
+
+    'cms.middleware.language.LanguageCookieMiddleware',
+ )
+INSTALLED_APPS += ('debug_toolbar', 'markitup', 'proposals','django_extensions', )
+
+MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2', ]
 # tricks to have debug toolbar when developing with docker
@@ -64,11 +71,11 @@ DEBUG_TOOLBAR_CONFIG = {
 
 # django-extensions
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ('django_extensions', )
+# INSTALLED_APPS = ('django_extensions', )
 
 # TESTING
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # Your local stuff: Below this line define 3rd party library settings
-# ------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
