@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Django settings for indaba project.
 
@@ -9,6 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from __future__ import absolute_import, unicode_literals
+
+import os
+gettext = lambda s: s
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
 
 import environ
 
@@ -49,12 +55,37 @@ LOCAL_APPS = (
     # Your stuff: custom apps go here
 )
 
+CMS_APPS = (
+    'cms',
+    'treebeard',
+    'menus',
+    'sekizai',
+    'djangocms_admin_style',
+    'reversion',
+    'easy_thumbnails',
+    # 'filer',
+    'mptt',
+
+    # 'djangocms_file',
+    'djangocms_link',
+    'djangocms_picture',
+    # 'djangocms_text_ckeditor',
+    'djangocms_file',
+    # 'djangocms_link',
+    # 'djangocms_picture',
+    'djangocms_text_ckeditor',
+
+    'webpack_loader',
+
+)
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + CMS_APPS
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
 MIDDLEWARE = (
+    'cms.middleware.utils.ApphookReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,6 +93,10 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION
@@ -100,6 +135,7 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
+
     'default': env.db('DATABASE_URL', default='postgres:///indaba'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
@@ -115,6 +151,10 @@ TIME_ZONE = 'UTC'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'en-us'
+LANGUAGES = (
+        ('en-us', ('English')),
+)
+
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -158,7 +198,9 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                # Your stuff: custom template context processors go here
+                'django.template.context_processors.csrf',
+
+                # # Your stuff: custom template context processors go here
             ],
         },
     },
