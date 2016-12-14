@@ -39,6 +39,7 @@ DJANGO_APPS = (
     # 'django.contrib.humanize',
 
     # Admin
+    'djangocms_admin_style',
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
@@ -60,7 +61,6 @@ CMS_APPS = (
     'treebeard',
     'menus',
     'sekizai',
-    'djangocms_admin_style',
     'reversion',
     'easy_thumbnails',
     # 'filer',
@@ -75,7 +75,7 @@ CMS_APPS = (
     # 'djangocms_picture',
     'djangocms_text_ckeditor',
 
-    'webpack_loader',
+    # 'webpack_loader',
 
 )
 
@@ -84,15 +84,17 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + CMS_APPS
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
-MIDDLEWARE = (
+MIDDLEWARE_CLASSES = (
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware middleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
@@ -116,6 +118,8 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 FIXTURE_DIRS = (
     str(APPS_DIR.path('fixtures')),
 )
+
+INTERNAL_IPS =[]
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -178,6 +182,7 @@ TEMPLATES = [
         # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
         'DIRS': [
             str(APPS_DIR.path('templates')),
+            str(ROOT_DIR.path( 'templates')),
         ],
         'OPTIONS': {
             # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
@@ -196,6 +201,8 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
+                'sekizai.context_processors.sekizai',
+                'cms.context_processors.cms_settings',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.csrf',
@@ -206,6 +213,11 @@ TEMPLATES = [
     },
 ]
 
+CMS_TEMPLATE = CMS_TEMPLATES = (
+        ## Customize this
+        ('page.html', 'Page'),
+        ('feature.html', 'Page with Feature')
+)
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

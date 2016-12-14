@@ -46,13 +46,13 @@ CACHES = {
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
-MIDDLEWARE += (
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+MIDDLEWARE_CLASSES += (
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 
 
     'cms.middleware.language.LanguageCookieMiddleware',
  )
-INSTALLED_APPS += ('debug_toolbar', 'markitup', 'proposals','django_extensions', )
+INSTALLED_APPS += ('markitup', 'proposals','django_extensions', )
 
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
