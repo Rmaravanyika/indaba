@@ -14,10 +14,19 @@ class Talk_Type(models.Model):
     )
 
     name = models.CharField(choices=talk_types, max_length=1)
-    
+
+    def __str__(self):
+        return u'%s' % (self.name,)
+
+
 class Proposal(models.Model):
 
-    abstract = MarkupField()
-    title = models.CharField(max_length=255)
+    abstract = MarkupField(help_text="Describe your talk in one or two"
+                           "paragraphs, mentioning your target audience & what"
+                           "they will get out of your talk"
+                           "You are free to use markdown syntax")
+    title = models.CharField(max_length=1024)
     talk_type = models.ForeignKey(Talk_Type)
 
+    def __str__(self):
+        return self.title

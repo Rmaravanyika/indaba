@@ -7,6 +7,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+from django.contrib import admin
+
+admin.autodiscover()
+
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='page.html'), name='home'),
@@ -22,6 +26,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
+    url(r'^', include('proposals.urls')),
     url(r'^', include('cms.urls')),
 
 
