@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
-    url(r'^', include('proposals.urls')),
+    url(r'^', include('proposals.urls', namespace = 'proposals')),
     url(r'^', include('cms.urls')),
 
 

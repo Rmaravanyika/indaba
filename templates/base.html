@@ -1,108 +1,125 @@
-{% load cms_tags menu_tags sekizai_tags staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
+    {% load cms_tags menu_tags sekizai_tags staticfiles %}
+    <!DOCTYPE HTML>
+    <html lang="en">
+    <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zunde - One Page Bootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Modern Business - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href={% static "css/bootstrap.min.css" %} rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href={% static "css/modern-business.css" %} rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href={% static "font-awesome/css/font-awesome.min.css" %} rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-   {% render_block "css" %}
-</head>
-
-<body>
-
-        {% cms_toolbar %}
-       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                  {% show_menu 0 100 100 100 %}              
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+    <!-- Styles -->
+    <link href= {% static "css/bootstrap.css" %} rel="stylesheet">
+    <link href= {% static "css/style.css" %} rel="stylesheet">
+    <link rel='stylesheet' id='prettyphoto-css'  href= {% static "css/prettyPhoto.css" %} type='text/css' media='all'>
+    <link href= {% static "css/fontello.css" %} type="text/css" rel="stylesheet">
+            <link href="css/fontello-ie7.css" type="text/css" rel="stylesheet">  
+        <![endif]-->
+    <!-- Google Web fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+    body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    }
+    </style>
+    <link href= {% static "css/bootstrap-responsive.css" %} rel="stylesheet">
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href= {% static "img/favicon.ico" %}>
+    <!-- JQuery -->
+    <script type="text/javascript" src= {% static  "js/jquery.js" %} ></script>
+    <!-- Load ScrollTo -->
+    <script type="text/javascript" src= {% static "js/jquery.scrollTo-1.4.2-min.js" %} ></script>
+    <!-- Load LocalScroll -->
+    <script type="text/javascript" src= {% static "js/jquery.localscroll-1.2.7-min.js" %}></script>
+    <!-- prettyPhoto Initialization -->
+    <script type="text/javascript" charset="utf-8">
+          $(document).ready(function(){
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+          });
+        </script>
+         {% render_block "css" %}
+    </head>
+     
+    <body>
+   
+    {% cms_toolbar %}
+    <!--******************** NAVBAR ********************-->
+    <div class="navbar-wrapper">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+	    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <img src= {% static "img/lg80.png" %} alt=""/>
+            <h1 class="brand"><a href="#top">Zunde!</a></h1>
+            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+            <nav class="pull-right nav-collapse collapse">
+              <ul id="menu-main" class="nav">
+                {% show_menu 0 100 100 100 %}
+                <li><a title="home" href="#top">Home</a></li>
+                <li><a title="services" href="#services">Services</a></li>
+                <li><a title="contact" href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <!-- /.container -->
         </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <!-- Page Heading/Breadcrumbs -->
-        <!-- <div class="row"> -->
-        <!--     <div class="col-lg-12"> -->
-        <!--         <h1 class="page-header">Full Width Page -->
-        <!--             <small>Subheading</small> -->
-        <!--         </h1> -->
-        <!--         <ol class="breadcrumb"> -->
-        <!--             <li><a href="index.html">Home</a> -->
-        <!--             </li> -->
-        <!--             <li class="active">Full Width Page</li> -->
-        <!--         </ol> -->
-        <!--     </div> -->
-        <!-- </div> -->
-        <!-- <1!-- /.row --1> -->
-
-        <!-- Content Row -->
-        <div class="row">
-            <div class="col-lg-12">
-              {% block content %} {% endblock %}
- 	    </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </footer>
-
+        <!-- /.navbar-inner -->
+      </div>
+      <!-- /.navbar -->
     </div>
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js" ></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    {% render_block "js" %}
-</body>
-
-</html>
+    <!-- /.navbar-wrapper -->
+    <div id="top"></div>
+    <!-- ******************** HeaderWrap ********************-->
+    <div id="headerwrap">
+      <header class="clearfix">
+        <h1><span>Zunde!</span> We make web a beautiful place.</h1>
+        <div class="container">
+          <div class="row">
+         </div>
+          <div class="row">
+            <div class="span12">
+              
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    
+    {% block content %} {% endblock %}
+      <!-- /.container -->
+    }
+    }
+    </section>
+    <hr>
+    <div class="footer-wrapper">
+      <div class="container">
+        <footer>
+          <small>&copy; 2016 zunde technologies. All rights reserved.</small>
+        </footer>
+      </div>
+      <!-- ./container -->
+    </div>
+    <!-- Loading the javaScript at the end of the page -->
+    <script type="text/javascript" src={% static "js/bootstrap.js" %}></script>
+    <script type="text/javascript" src= {% static "js/jquery.prettyPhoto.js" %}></script>
+    <script type="text/javascript" src= {% static "js/site.js" %}></script>
+    
+    <!--ANALYTICS CODE-->
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-29231762-1']);
+	  _gaq.push(['_setDomainName', 'dzyngiri.com']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+	{% render_block "js" %}
+    </body>
+        </html>
