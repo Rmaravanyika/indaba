@@ -232,6 +232,10 @@ CMS_TEMPLATE = CMS_TEMPLATES = (
         ('page.html', 'Page'),
         ('feature.html', 'Page with Feature')
 )
+
+CMS_PERMISSION = True
+
+CMS_PLACEHOLDER_CONF = {}
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
