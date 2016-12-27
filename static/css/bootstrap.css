@@ -71,9 +71,11 @@ sub {
 	bottom: -0.25em;
 }
 img {
-	width: auto\9;
+	width: 270px;
 	height: auto;
 	max-width: 100%;
+	margin-left: 40%;
+	margin-right:40%;
 	vertical-align: middle;
 	border: 0;
 	-ms-interpolation-mode: bicubic;

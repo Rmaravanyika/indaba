@@ -20,7 +20,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <style>
     body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-top: 90px; /* 60px to make the container go all the way to the bottom of the topbar */
     }
     </style>
     <link href= {% static "css/bootstrap-responsive.css" %} rel="stylesheet">
@@ -73,27 +73,23 @@
     <!-- /.navbar-wrapper -->
     <div id="top"></div>
     <!-- ******************** HeaderWrap ********************-->
-    <div id="headerwrap">
-      <header class="clearfix">
-        <h1><span>Legend!</span> We make web a beautiful place.</h1>
-        <div class="container">
-          <div class="row">
-            <div class="span12">
-              <h2>Signup for our Newsletter to be updated</h2>
-              <input type="text" name="your-email" placeholder="you@yourmail.com" class="cform-text" size="40" title="your email">
-              <input type="submit" value="Notify me" class="cform-submit">
+    {% placeholder pic or %}
+    <header role="banner">
+     <div class="grid-container">
+            <div class="grid-60 prefix-20">
+                <div class="branding">
+                    <p class="event-name"><span>Pycon</span> Zim</p>
+                    <p class="event-location">harare</p>
+                    <p class="event-date">6-9 June, 2017</p>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="span12">
-              
-            </div>
-          </div>
-        </div>
-      </header>
-    </div>
+        </div><!-- /grid-container -->
+            </header>
+            {% endplaceholder %}
+    
     {% block content %} 
     <!--******************** Feature ********************-->
+		      {% placeholder content or %}
     <div class="scrollblock">
       <section id="feature">
         <div class="container">
@@ -102,7 +98,7 @@
               <article>
                 <p>PyCon Zimbabwe is the national conference where professionals, </p> 
                  <p>researchers and enthusiasts of the most beautiful programming </p>
-                  <p>language gather together </p>                   
+                  <p>language gather together </p>
                 
               </article>
             </div>
@@ -114,6 +110,7 @@
       </section>
     </div>
     <hr>
+                      {% endplaceholder %}		  
     <!--******************** Portfolio Section ********************-->
     <section id="portfolio" class="single-page scrollblock">
       <div class="container">

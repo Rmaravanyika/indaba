@@ -135,7 +135,8 @@ h5 {
 }
 strong {
 	font-weight:normal;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Quicksand';
+	font-size:96px;
 }
 small {
 	font-size: 0.75em; /* 12px */

@@ -5,6 +5,7 @@ ACCEPTED = 'A'
 PENDING = 'P'
 REJECTED = 'R'
 
+
 class Talk_Type(models.Model):
 
     talk_types = (
@@ -30,3 +31,14 @@ class Proposal(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class TalkUrl(models.Model):
+    """An url to stuff relevant to the talk - videos, slides, etc.
+
+       Note that these are explicitly not intended to be exposed to the
+       user, but exist for use by the conference organisers."""
+
+    description = models.CharField(max_length=256)
+    url = models.URLField()
+    proposal = models.ForeignKey(Proposal)
