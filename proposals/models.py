@@ -33,12 +33,12 @@ class Proposal(models.Model):
         return self.title
 
 
-class TalkUrl(models.Model):
-    """An url to stuff relevant to the talk - videos, slides, etc.
-
-       Note that these are explicitly not intended to be exposed to the
-       user, but exist for use by the conference organisers."""
-
-    description = models.CharField(max_length=256)
-    url = models.URLField()
-    proposal = models.ForeignKey(Proposal)
+# class TalkUrl(models.Model):
+#     """An url to stuff relevant to the talk - videos, slides, etc.
+#
+#        Note that these are explicitly not intended to be exposed to the
+#        user, but exist for use by the conference organisers."""
+#
+#     description = models.CharField(max_length=256)
+#     url = models.URLField()
+#     proposal = models.ForeignKey(Proposal)
