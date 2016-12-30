@@ -63,7 +63,7 @@ CMS_APPS = (
     'sekizai',
     'reversion',
     'easy_thumbnails',
-    # 'filer',
+    'filer',
     'mptt',
 
     # 'djangocms_file',
@@ -219,7 +219,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.csrf',
-                
+
 
                 # # Your stuff: custom template context processors go here
             ],
@@ -230,7 +230,7 @@ TEMPLATES = [
 CMS_TEMPLATE = CMS_TEMPLATES = (
         ## Customize this
         ('page.html', 'Page'),
-        ('feature.html', 'Page with Feature')
+        # ('feature.html', 'Page with Feature')
 )
 
 CMS_PERMISSION = True

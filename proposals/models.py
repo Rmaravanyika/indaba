@@ -42,3 +42,8 @@ class Proposal(models.Model):
 #     description = models.CharField(max_length=256)
 #     url = models.URLField()
 #     proposal = models.ForeignKey(Proposal)
+class TalkUrl(models.model):
+
+    desciption = models.CharField(max_length=255, blank=True)
+    url = models.URLField()
+    proposal = models.ForeignKey(proposal)

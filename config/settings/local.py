@@ -52,7 +52,13 @@ MIDDLEWARE_CLASSES += (
 
     'cms.middleware.language.LanguageCookieMiddleware',
  )
-INSTALLED_APPS += ('markitup', 'proposals','django_extensions', )
+INSTALLED_APPS += (
+    'markitup',
+    'proposals',
+    'django_extensions',
+    'aldryn_style',
+    'aldryn_bootstrap3',
+    )
 
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
@@ -78,4 +84,9 @@ DEBUG_TOOLBAR_CONFIG = {
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # Your local stuff: Below this line define 3rd party library settings
-    # ------------------------------------------------------------------------------
+THUMBNAIL_PROCESSORS = (
+        'easy_thumbnails.processors.colorspace',
+        'easy_thumbnails.processors.autocrop',
+        'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+        'easy_thumbnails.processors.filters'
+)
