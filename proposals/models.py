@@ -42,9 +42,3 @@ class TalkUrl(models.Model):
     description = models.CharField(max_length=256)
     url = models.URLField()
     proposal = models.ForeignKey(Proposal)
-
-
-class author(models.model):
-    """ a class to represent the submitter of a talk proposal"""
-    name = models.charfield(max_length=255, blank=true)
-    talk = models.ForeignKey(Proposal)
